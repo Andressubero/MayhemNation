@@ -1,0 +1,15 @@
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.button-container button,
+.button-container p {
+  margin: 0 20px;
+}
+.items-container {
+  display: flex;
+}
+.items-container div {
+  margin: 0 auto;
+}

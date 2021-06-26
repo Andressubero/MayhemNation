@@ -1,0 +1,23 @@
+header {
+  background-color: black;
+  color: white;
+  padding: 16px;
+}
+
+header h1 {
+  text-align: center;
+}
+
+.menu {
+  display: flex;
+  font-size: 24px;
+}
+
+.menu div {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.menu div:hover {
+  color: rgb(216, 156, 65);
+}
