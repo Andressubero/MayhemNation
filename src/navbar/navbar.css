@@ -1,7 +1,7 @@
 header {
   background-color: black;
-  color: white;
   padding: 16px;
+  color: white;
 }
 
 header h1 {
@@ -13,11 +13,13 @@ header h1 {
   font-size: 24px;
 }
 
-.menu div {
+.navbar-link {
   margin: 0 auto;
   text-align: center;
+  color: white;
+  text-decoration: none;
 }
 
-.menu div:hover {
+.navbar-link:hover {
   color: rgb(216, 156, 65);
 }
