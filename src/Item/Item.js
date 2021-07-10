@@ -39,8 +39,9 @@ function ShowItem(props) {
 
     return (
         <div className="showproduct">
-            <div>Name:{props.title}</div>
-            <div>Price: {props.userId}</div>
+            <img width="330px" src={props.img}></img>
+            <div>Name:{props.name}</div>
+            <div>Price: {props.id}</div>
             <button> See More</button>
             <button onClick={() => {addToCart(props.id)}}> Add</button>
             <button onClick={() => {deleteFromCart(props.id)}} >Delete</button>

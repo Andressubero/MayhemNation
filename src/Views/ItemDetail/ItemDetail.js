@@ -6,16 +6,22 @@ function Itemdetail({match}) {
     
     React.useEffect(() => {
 
-        fetch(`https://jsonplaceholder.typicode.com/todos/${match.params.id}`)
-  .then(response => response.json())
-  .then(data => setitem(data))      
-    
-    }, [])
+        fetch(`https://mocki.io/v1/3f8922bd-5f51-4647-845b-f06e823540d1/${match}`, {mode: 'no-cors'})
+        .then(response => {
+            return response.text()
+          })
+          .then(data => { return JSON.parse(data)
+          })
+          .then(info=> setitem(info))
+        })
+          
+
     
     return (
         <div>
-            <h1>{item.title}</h1>
-            <h2>{item.userId}</h2>
+            <h1>{item.name}</h1>
+            <h2>{item.brand}</h2>
+            <h2>{item.price}</h2>
 
             
         </div>
