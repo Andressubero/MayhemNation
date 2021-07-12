@@ -1,15 +1,17 @@
 import './App.css';
 import Navbar from './Navbar/Navbar';
-import ItemList from "./Itemlist/Itemlist";
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom"
-import Home from "./Views/Home"
-import Contact from "./Views/Contact"
-import Programs from "./Views/Programs"
-import ItemDetail from "./Views/ItemDetail/ItemDetail"
+import ItemList from "./Views/Itemlist/Itemlist";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import Home from "./Views/Home/Home";
+import Contact from "./Views/Contact/Contact";
+import Programs from "./Views/Programs/Programs";
+import ItemDetail from "./Views/ItemDetail/ItemDetail";
+import { ItemsProvider } from './Views/Context/Context';
 
 
 function App() {
   return (
+    <ItemsProvider>
     <Router>
     <div className="App">
        <Navbar />
@@ -24,6 +26,7 @@ function App() {
       
     </div>
     </Router>
+    </ItemsProvider>
   );
 }
 

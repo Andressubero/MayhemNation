@@ -2,21 +2,15 @@ import React from 'react'
 import ShowItem from '../Item/Item'
 import "./Itemlist.css"
 import  {Link} from "react-router-dom"
+import  { useContext } from 'react';
+import { ItemsContext } from '../Context/Context';
+
 
 
 function ItemList() {
 
     
-    const [items, setitems] = React.useState([])
-
-    React.useEffect(() => {
-
-        fetch('https://mocki.io/v1/3f8922bd-5f51-4647-845b-f06e823540d1')
-  .then(response => response.json())
-  .then(data => setitems(data) )
-        
-        
-    }, [])
+    const [items, setitems] = useContext(ItemsContext)
 
 
     return (
