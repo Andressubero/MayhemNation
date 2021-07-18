@@ -33,15 +33,18 @@ export default function ItemDetail({data}) {
             {data.name}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-            {data.price}
+            <ul>
+                <li>Brand: {data.brand}</li>
+                <li>Stock: {data.stock}</li>
+                <li>Price: {data.price} $</li>
+                
+            </ul>
+
             </Typography>
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button size="small" color="primary">
-            Learn More
-          </Button>
-          <CounterContainer/>
+          <CounterContainer stock={data.stock}/>
         </CardActions>
       </Card>
     );

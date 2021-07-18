@@ -2,11 +2,13 @@ import React from 'react'
 import Button from '@material-ui/core/Button';
 import { useState } from 'react';
 
-export const Counter = () => {
+export const Counter = ({stock}) => {
 
     const [count, setCount] = useState(1)
     const onAdd = () => {
-        setCount(count + 1)
+        if(count< stock) {
+            setCount(count + 1)}
+        
     }
     const onDelete = () => {
         if (count > 1) {setCount(count - 1)}

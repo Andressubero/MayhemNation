@@ -1,10 +1,10 @@
 import React from 'react'
 import {Counter} from './Counter'
 
-export const CounterContainer = () => {
+export const CounterContainer = ({stock}) => {
     return (
         <div>
-            <Counter/>
+            <Counter stock={stock} />
             
         </div>
     )
