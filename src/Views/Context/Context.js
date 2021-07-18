@@ -1,16 +1,30 @@
 import React, { createContext, useState, useEffect } from 'react';
+import {db} from "../../Firebase/Firebase";
+
 
 export const ItemsContext = createContext();
 
 export const ItemsProvider = (props) => {
 	const [items, setItems] = useState([]);
 
+	const getProducts = () => {
+
+		const docs = []
+
+		db.collection('products').onSnapshot((querySnapshot)=> {
+			querySnapshot.forEach((doc) => {
+				docs.push({...doc.data(), id: doc.id})
+			})
+			setItems(docs)
+		})
+
+	}
+
     useEffect(() => {
 
-        fetch('https://mocki.io/v1/3f8922bd-5f51-4647-845b-f06e823540d1')
-    .then(response => response.json())
-    .then(data => setItems(data) )
-    }, [])
+		getProducts()
+
+	}, [])
     
 
 	// 3 - RETORNAMOS NUESTRO CONTEXT CON UN .PROVIDER
