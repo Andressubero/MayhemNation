@@ -3,33 +3,26 @@ import ItemDetail from './ItemDetail'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import {db} from '../../Firebase/Firebase'
+import { ItemsContext } from '../Context/Context';
+import  { useContext } from 'react';
 
 export const ItemDetailContainer = ({match}) => {
 
-  const findProduct = () => {
+    const [items, setitems] = useContext(ItemsContext)
+    const [prod, setProd] = useState(0)
 
-      
-
-    const docs = []
-
-        db.collection('products').onSnapshot((querySnapshot)=> {
-        querySnapshot.forEach((doc) => {
-            docs.push({...doc.data(), id: doc.id})
-        })
-        let product = docs.find((item) => item.id = match.params.id)
-        console.log(product)
-    })
-}
-
+    const findProduct = () => {
+       let  product = items.find((product) => product.id == match.params.id)
+        setProd(product)
+    }
+    
     useEffect( () => {
-        findProduct()
-        
+        findProduct() 
     }, [])
 
     return (
         <div>
-             
-            
+            <ItemDetail data={prod} />
         </div>
     )
 }
