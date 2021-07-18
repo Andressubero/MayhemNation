@@ -12,10 +12,11 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
     root: {
-      maxWidth: 345,
+      Width: 300,
     },
     media: {
       height: 300,
+      width: 300,
     },
   });
   export default function ShowItem({product}) {
@@ -34,13 +35,13 @@ const useStyles = makeStyles({
               {product.name}
               </Typography>
               <Typography variant="body2" color="textSecondary" component="p">
-              {product.price}
+              Price: {product.price}$
               </Typography>
             </CardContent>
           </CardActionArea>
           <CardActions>
           <Link to={`/detail/${product.id}`}><Button size="small" color="primary">
-              Learn More
+              See More
             </Button></Link>
           </CardActions>
         </Card>

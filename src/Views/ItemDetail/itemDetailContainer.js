@@ -5,6 +5,7 @@ import { useState } from 'react'
 import {db} from '../../Firebase/Firebase'
 import { ItemsContext } from '../Context/Context';
 import  { useContext } from 'react';
+import "./ItemDetailContainer.css"
 
 export const ItemDetailContainer = ({match}) => {
 
@@ -21,7 +22,7 @@ export const ItemDetailContainer = ({match}) => {
     }, [])
 
     return (
-        <div>
+        <div className="card-container">
             <ItemDetail data={prod} />
         </div>
     )

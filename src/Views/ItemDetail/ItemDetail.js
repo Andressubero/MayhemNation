@@ -8,13 +8,15 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { CounterContainer } from "../../components/counter/CounterContainer";
+import "./ItemDetailContainer.css"
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    maxWidth: 500,
   },
   media: {
     height: 300,
+    width: 300,
   },
 });
 export default function ItemDetail({data}) {
@@ -36,6 +38,7 @@ export default function ItemDetail({data}) {
             <ul>
                 <li>Brand: {data.brand}</li>
                 <li>Stock: {data.stock}</li>
+                <li>Description: {data.description}</li>
                 <li>Price: {data.price} $</li>
                 
             </ul>
@@ -43,7 +46,7 @@ export default function ItemDetail({data}) {
             </Typography>
           </CardContent>
         </CardActionArea>
-        <CardActions>
+        <CardActions className="counter-container">
           <CounterContainer stock={data.stock}/>
         </CardActions>
       </Card>

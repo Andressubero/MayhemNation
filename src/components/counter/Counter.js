@@ -1,6 +1,8 @@
 import React from 'react'
 import Button from '@material-ui/core/Button';
 import { useState } from 'react';
+import "./Counter.css"
+import { withWidth } from '@material-ui/core';
 
 export const Counter = ({stock}) => {
 
@@ -15,12 +17,22 @@ export const Counter = ({stock}) => {
     }
     
     return (
-        <div>
+        <div style={{width:"100%"}}>
 
-<Button variant="contained" color="primary" onClick={onAdd}>Add</Button>
-<Button variant="contained" color="primary" onClick={onDelete}> Delete</Button>
-<p> {count} </p>
-<Button variant="contained" color="secondary">Add to Cart</Button>
+            <div className="btn-container">
+            <div className="btn">
+            <Button variant="contained" color="primary"  onClick={onAdd}>Add</Button>
+            </div>
+            <div className="btn"><h2>{count}</h2></div>
+            <div className="btn">
+            <Button variant="contained" color="primary"  onClick={onDelete}> Delete</Button>
+            </div>
+            </div>           
+           <div>
+           
+           <Button variant="contained"  color="secondary" >Add to Cart</Button>
+           </div>
+            
 
 
         
