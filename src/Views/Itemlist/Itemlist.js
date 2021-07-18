@@ -12,7 +12,7 @@ function ItemList({items}) {
         <div className="product-container">
             {items.map( function(product) {
                 return (
-                    <div key={product.id}>
+                    <div key={product.id} >
                         
                          <ShowItem product={product} />
                         
