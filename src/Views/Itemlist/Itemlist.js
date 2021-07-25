@@ -1,10 +1,6 @@
 import React from 'react'
 import ShowItem from '../Item/Item'
 import "./Itemlist.css"
-import  {Link} from "react-router-dom"
-
-
-
 
 function ItemList({items}) {
 

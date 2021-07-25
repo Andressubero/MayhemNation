@@ -15,9 +15,9 @@ const Navbar = () => {
 
             <div className = "menu">
                 <Link to="/" className="navbar-link">Home</Link>
-                <Link to="/programs" className="navbar-link">Our Programs</Link>
-                <Link to="/shop" className="navbar-link">Shop</Link>
-                <Link to="/contact" className="navbar-link">Contact</Link> 
+                <Link to="/Clothing" className="navbar-link">Clothing</Link>
+                <Link to="/FitnessEquipment" className="navbar-link">Fitness Equipment</Link>
+                <Link to="/Contact" className="navbar-link">Contact</Link> 
                 <CartWidget />
             </div>
         </header>

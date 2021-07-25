@@ -6,7 +6,7 @@ import Home from "./Views/Home/Home";
 import Contact from "./Views/Contact/Contact";
 import Programs from "./Views/Programs/Programs";
 import {ItemDetailContainer} from "./Views/ItemDetail/itemDetailContainer";
-import { ItemsProvider } from './Views/Context/Context';
+import { ItemsProvider } from './Context/Context';
 
 
 function App() {
@@ -17,9 +17,10 @@ function App() {
        <Navbar />
        <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/programs" component={Programs} />
-        <Route path="/shop" component={Itemlistcontainer} />
-        <Route path="/contact" component={Contact} />
+        <Route path="/Clothing" component={Programs} />
+        <Route path="/FitnessEquipment" component={Itemlistcontainer} />
+        <Route path="/FitnessEquipment/:cat" component={Itemlistcontainer} />
+        <Route path="/Contact" component={Contact} />
         <Route path="/detail/:id" component={ItemDetailContainer} />
        </Switch>
        

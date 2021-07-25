@@ -5,10 +5,11 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { CounterContainer } from "../../components/counter/CounterContainer";
-import "./ItemDetailContainer.css"
+import { useContext } from 'react';
+import { ItemsContext } from '../../Context/Context';
+
 
 const useStyles = makeStyles({
   root: {
@@ -19,10 +20,13 @@ const useStyles = makeStyles({
     width: 300,
   },
 });
+
 export default function ItemDetail({data}) {
     const classes = useStyles();
+    const {addToCart}  = useContext(ItemsContext)
+    const onAdd = (qty) => { addToCart(data, qty)}
   
-    return (
+    return ( 
       <Card className={classes.root}>
         <CardActionArea>
           <CardMedia
@@ -39,18 +43,16 @@ export default function ItemDetail({data}) {
                 <li>Brand: {data.brand}</li>
                 <li>Stock: {data.stock}</li>
                 <li>Description: {data.description}</li>
-                <li>Price: {data.price} $</li>
-                
+                <li>Price: {data.price}$</li>
             </ul>
-
             </Typography>
           </CardContent>
         </CardActionArea>
         <CardActions className="counter-container">
-          <CounterContainer stock={data.stock}/>
+          <CounterContainer data={data} onAdd={onAdd} />
         </CardActions>
-      </Card>
-    );
+      </Card>)    
+    
   }
 
 
