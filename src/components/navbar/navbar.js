@@ -15,10 +15,10 @@ const Navbar = () => {
 
             <div className = "menu">
                 <Link to="/" className="navbar-link">Home</Link>
-                <Link to="/Clothing" className="navbar-link">Clothing</Link>
+                
                 <Link to="/FitnessEquipment" className="navbar-link">Fitness Equipment</Link>
                 <Link to="/Contact" className="navbar-link">Contact</Link> 
-                <CartWidget />
+                <Link to="/CartView" className="navbar-link"><CartWidget /></Link>
             </div>
         </header>
     )

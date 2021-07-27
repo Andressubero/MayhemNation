@@ -12,7 +12,7 @@ export const CounterContainer = ({data, onAdd}) => {
    
     return (
         <div className="counter-container">
-            <Counter stock={data.stock} onAdd={onAdd}  />
+            <Counter stock={data.stock} onAdd={onAdd} />
             
         </div>
     )

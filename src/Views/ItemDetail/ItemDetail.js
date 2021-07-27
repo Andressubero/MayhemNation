@@ -23,8 +23,14 @@ const useStyles = makeStyles({
 
 export default function ItemDetail({data}) {
     const classes = useStyles();
-    const {addToCart}  = useContext(ItemsContext)
-    const onAdd = (qty) => { addToCart(data, qty)}
+    const {addToCart, cart}  = useContext(ItemsContext)
+
+    const onAdd = (qty) => { 
+      addToCart(data, qty)
+      }
+    
+
+      console.log(cart)
   
     return ( 
       <Card className={classes.root}>
@@ -38,8 +44,8 @@ export default function ItemDetail({data}) {
             <Typography gutterBottom variant="h5" component="h2">
             {data.name}
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-            <ul>
+            <Typography variant="body2" color="textSecondary" component="div">
+           <ul>
                 <li>Brand: {data.brand}</li>
                 <li>Stock: {data.stock}</li>
                 <li>Description: {data.description}</li>
@@ -49,7 +55,7 @@ export default function ItemDetail({data}) {
           </CardContent>
         </CardActionArea>
         <CardActions className="counter-container">
-          <CounterContainer data={data} onAdd={onAdd} />
+          <CounterContainer data={data} onAdd={onAdd}/>
         </CardActions>
       </Card>)    
     

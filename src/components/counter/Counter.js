@@ -28,15 +28,11 @@ export const Counter = ({stock, onAdd}) => {
             <div className="btn">
             <Button variant="contained" color="primary"  onClick={decrement}> Delete</Button>
             </div>
-            </div>           
+            </div>   
+
            <div>
-           
            <Button variant="contained"  color="secondary" onClick={()=> onAdd(count)}  >Add to Cart</Button>
-           </div>
-            
-
-
-        
+           </div>        
             
         </div>
     )

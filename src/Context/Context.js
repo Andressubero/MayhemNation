@@ -28,13 +28,10 @@ export const ItemsProvider = (props) => {
 
 	}, [])
 
-	const isInCart = (id) => {
-		 cart.some(item => item.id === id)
-	}
-
+	
 	const addToCart = (item, num) => {
-
-		if (isInCart(item.id)) {
+		let isItemInCart = cart.find( product => product.id === item.id)
+		if (isItemInCart) {
 			const newCart = cart.map( itemInCart => {
 				if (itemInCart.id === item.id ) {
 					return {...itemInCart, quantity: itemInCart.quantity + num}
@@ -45,13 +42,20 @@ export const ItemsProvider = (props) => {
 				
 			 	setCart((prev) => [...prev, {...item, quantity: num}])
 			}
-			 console.log(cart)
+			 
 
+	}
+	const clearCart = () => {
+		setCart([])
+	}
+
+	const deleteFromCart = (id) => {
+		setCart(cart.filter((item) => item.id !== id))
 	}
     
 
 	return (
-		<ItemsContext.Provider value={{items, setItems,addToCart, cart}}>
+		<ItemsContext.Provider value={{items, setItems, addToCart, clearCart, cart, deleteFromCart}}>
 			{props.children}
 		</ItemsContext.Provider>
 	);
