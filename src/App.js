@@ -6,7 +6,7 @@ import Home from "./Views/Home/Home";
 import Contact from "./Views/Contact/Contact";
 import {ItemDetailContainer} from "./Views/ItemDetail/itemDetailContainer";
 import { ItemsProvider } from './Context/Context';
-import {CartViewContainer} from './Views/CartView/CartViewContainer'
+import {CartView} from './Views/CartView/CartView'
 
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
        <Navbar />
        <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/CartView" component={CartViewContainer} />
+        <Route path="/CartView" component={CartView} />
         <Route path="/FitnessEquipment" component={Itemlistcontainer} />
         <Route path="/FitnessEquipment/:cat" component={Itemlistcontainer} />
         <Route path="/Contact" component={Contact} />

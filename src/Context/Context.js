@@ -55,7 +55,7 @@ export const ItemsProvider = (props) => {
     
 
 	return (
-		<ItemsContext.Provider value={{items, setItems, addToCart, clearCart, cart, deleteFromCart}}>
+		<ItemsContext.Provider value={{items, setItems, addToCart, clearCart, cart, deleteFromCart, setCart}}>
 			{props.children}
 		</ItemsContext.Provider>
 	);

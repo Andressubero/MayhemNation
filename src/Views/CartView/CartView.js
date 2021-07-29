@@ -7,6 +7,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { useContext, useEffect, useState} from 'react'
+import { ItemsContext } from '../../Context/Context'
 
 
 const useStyles = makeStyles({
@@ -19,42 +21,71 @@ const useStyles = makeStyles({
   },
 });
 
-export  function CartView({data, onDelete, onAdd, clearCart}) {
+export  function CartView() {
   const classes = useStyles();
+  const {cart, clearCart, deleteFromCart, addToCart, setCart} = useContext(ItemsContext)
+  const onDelete = (item) => {
+      if (item.quantity === 1) {
+          deleteFromCart(item.id)
+      } else {
+        const newCart = cart.map( itemInCart => {
+            if (itemInCart.id === item.id ) {
+                return {...itemInCart, quantity: itemInCart.quantity - 1}
+             } else return itemInCart
+         })
+         setCart(newCart)	
+          
+      }
+  }
+  
 
-  return (
-    <Card className={classes.root}>
+  return ( 
+    
+        <div className="cart-container">
+            {cart.map(item => {
+                return (
+                    <div key={`itemInCart-${item.id}`}>
+
+<Card className={classes.root}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={data.img}
+          image={item.img}
           title="Contemplative Reptile"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            {data.name}
+            {item.name}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="div">
             <ul>
-                <li>Description:{data.description}</li>
-                <li>Quantity: {data.quantity} </li>
-                <li>Brand: {data.brand} </li>
-                <li>Price: {data.price * data.quantity} </li>
+                <li>Description:{item.description}</li>
+                <li>Quantity: {item.quantity} </li>
+                <li>Brand: {item.brand} </li>
+                <li>Price: {item.price * item.quantity} </li>
             </ul>
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small"  color="primary">
+        <Button size="small" onClick={()=> {addToCart(item, 1)}} color="primary">
             Add
         </Button>
-        <Button size="small" color="primary">
+        <Button onClick={()=> {onDelete(item)}}size="small" color="primary">
             Remove
         </Button>
       </CardActions>
     </Card>
-  );
+
+
+                    </div>                
+                    
+                )
+
+            })}
+            
+        </div>
+    
+
+  )
 }
-
-
-
