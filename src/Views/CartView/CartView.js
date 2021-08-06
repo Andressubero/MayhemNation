@@ -23,7 +23,7 @@ const useStyles = makeStyles({
 
 export  function CartView() {
   const classes = useStyles();
-  const {cart, clearCart, deleteFromCart, addToCart, setCart} = useContext(ItemsContext)
+  const {cart, clearCart, deleteFromCart, addToCart, setCart, totalPrice} = useContext(ItemsContext)
   const onDelete = (item) => {
       if (item.quantity === 1) {
           deleteFromCart(item.id)
@@ -40,13 +40,19 @@ export  function CartView() {
   
 
   return ( 
+
+    <div>
+
+    <div> <input value={`Total Price: ${totalPrice}$`}/> </div>
+
     
+
         <div className="cart-container">
             {cart.map(item => {
                 return (
                     <div key={`itemInCart-${item.id}`}>
 
-<Card className={classes.root}>
+      <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
@@ -78,14 +84,18 @@ export  function CartView() {
     </Card>
 
 
-                    </div>                
+                    </div>  
+               
+                    
                     
                 )
 
             })}
             
         </div>
+
+        
     
 
-  )
+        </div>) 
 }

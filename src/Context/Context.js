@@ -52,10 +52,22 @@ export const ItemsProvider = (props) => {
 	const deleteFromCart = (id) => {
 		setCart(cart.filter((item) => item.id !== id))
 	}
+
+	const totalItemsCount = cart.reduce( (acc, item)=> {
+
+		return acc = acc + item.quantity 
+
+	} ,0)
+
+	const totalPrice = cart.reduce( (acc, item)=> {
+
+		return acc +=  item.quantity * item.price
+
+	} ,0)
     
 
 	return (
-		<ItemsContext.Provider value={{items, setItems, addToCart, clearCart, cart, deleteFromCart, setCart}}>
+		<ItemsContext.Provider value={{items, setItems, addToCart, clearCart, cart, deleteFromCart, setCart, totalItemsCount, totalPrice }}>
 			{props.children}
 		</ItemsContext.Provider>
 	);

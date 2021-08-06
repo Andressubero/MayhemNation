@@ -2,14 +2,15 @@ import React from 'react'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import {useContext} from "react"
 import { ItemsContext } from '../../Context/Context';
+import Input from '@material-ui/core/Input';
+import "./CartWidget.css"
 
 export const CartWidget = () => {
-    const {cart} = useContext(ItemsContext)
-    if (cart.lenght === 0)  return <div></div>    
+    const {totalItemsCount} = useContext(ItemsContext)  
     return (
-        <div>
+        <div className="cart-icon-container">
         <ShoppingCartIcon fontSize="large"/>
-            
+        {totalItemsCount}  
         </div>
     )
 }

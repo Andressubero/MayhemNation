@@ -11,6 +11,7 @@ export const ItemDetailContainer = ({match}) => {
 
     const {items} = useContext(ItemsContext)
     const [isLoading, setLoading] = useState(true)
+ 
     const [prod, setProd] = useState(0)
 
     const findProduct = () => {
@@ -21,7 +22,7 @@ export const ItemDetailContainer = ({match}) => {
     useEffect( () => {
         findProduct() 
         setLoading(false)
-    },)
+    }, )
 
     if (isLoading || !prod) return <h1>Loading</h1>
 
