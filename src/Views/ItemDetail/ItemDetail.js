@@ -7,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { CounterContainer } from "../../components/counter/CounterContainer";
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect} from 'react';
 import Button from '@material-ui/core/Button';
 import { ItemsContext } from '../../Context/Context';
 import { Link } from 'react-router-dom';
@@ -34,8 +34,12 @@ export default function ItemDetail({data}) {
       setDisabled(true)
       }
     
-
-      console.log(cart)
+      useEffect(() => {
+       if(data.stock === 0) {
+         setDisabled(true)
+       }
+      }, [data.stock])
+    
   
     return ( 
       <Card className={classes.root}>

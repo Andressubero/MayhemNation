@@ -37,11 +37,21 @@ export const ItemsProvider = (props) => {
 				 } else return itemInCart
 			 })
 			 setCart(newCart)	
+
 			} else {
 				
 			 	setCart((prev) => [...prev, {...item, quantity: num}])
 			}
-			 
+
+			const newItems = items.map( itemDB => {
+				if(itemDB.id === item.id) {
+					return {...itemDB, stock: itemDB.stock - num}
+				} else return itemDB 
+							
+			})
+			setItems(newItems)
+			
+			
 
 	}
 	const clearCart = () => {
@@ -82,16 +92,3 @@ export const ItemsProvider = (props) => {
 	);
 };
 
-
-// let productInCart = cart.find(item => item.id === id)
-// if (productInCart) {
-// 	const newCart = cart.map( itemInCart => {
-// 		if (itemInCart.id === id ) {
-// 			itemInCart.count = itemInCart.count + count
-// 		} else return itemInCart
-// 	})
-// 	setCart(newCart)
-// } else {
-// 	let {name, price} = items.find( item => item.id === id)
-// 	setCart((prev) => [...prev, {name, price, count: count}])
-// }

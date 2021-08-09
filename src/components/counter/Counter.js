@@ -19,7 +19,7 @@ export const Counter = ({stock, onAdd}) => {
     const [disabled, setDisabled] = useState(false)
 
     useEffect ( ()=> {
-        if (count  === stock ) {
+        if (count  === stock  ) {
             setDisabled(true)} else {
                 setDisabled(false)
             }
