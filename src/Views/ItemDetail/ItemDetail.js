@@ -25,7 +25,7 @@ const useStyles = makeStyles({
 
 export default function ItemDetail({data}) {
     const classes = useStyles();
-    const {addToCart, cart}  = useContext(ItemsContext)
+    const {addToCart}  = useContext(ItemsContext)
     const [isDisabled, setDisabled] = useState(false)
 
 

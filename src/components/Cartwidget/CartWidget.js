@@ -2,9 +2,8 @@ import React from 'react'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import {useContext, useState, useEffect} from "react"
 import { ItemsContext } from '../../Context/Context';
-import Input from '@material-ui/core/Input';
 import "./CartWidget.css"
-import { TrainRounded } from '@material-ui/icons';
+
 
 export const CartWidget = () => {
 

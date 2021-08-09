@@ -8,7 +8,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { useContext, useEffect, useState} from 'react'
+import { useContext} from 'react'
 import { ItemsContext } from '../../Context/Context'
 import Input from '@material-ui/core/Input';
 import "./CartView.css"
@@ -28,7 +28,7 @@ const useStyles = makeStyles({
 
 export  function CartView() {
   const classes = useStyles();
-  const {cart, clearCart, deleteFromCart, addToCart, setCart, totalPrice, deleteOne, totalItemsCount} = useContext(ItemsContext)
+  const {cart, clearCart, deleteFromCart,  totalPrice, deleteOne, totalItemsCount} = useContext(ItemsContext)
 
  const onDelete = (item) => {
    if (item.quantity === 1) {

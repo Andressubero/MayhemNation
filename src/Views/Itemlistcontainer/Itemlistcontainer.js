@@ -1,7 +1,7 @@
 import React from "react"
 import ItemList from '../Itemlist/Itemlist';
 import { ItemsContext } from '../../Context/Context';
-import  { useContext, useState, useEffect } from 'react';
+import  { useContext,  useEffect } from 'react';
 import {  useHistory} from "react-router-dom";
 import { useParams } from 'react-router-dom';
 import "./ItemListContainer.css"
@@ -11,7 +11,7 @@ import "./ItemListContainer.css"
 const Itemlistcontainer = (props) => {
 
     const history = useHistory()
-    const [products, setProducts] = useState([])
+    
    
     const {items} = useContext(ItemsContext)
 

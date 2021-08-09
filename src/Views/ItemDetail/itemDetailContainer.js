@@ -22,7 +22,7 @@ export const ItemDetailContainer = ({match}) => {
     useEffect( () => {
         findProduct() 
         setLoading(false)
-    }, )
+    },)
 
     if (isLoading || !prod) return <h1>Loading</h1>
 

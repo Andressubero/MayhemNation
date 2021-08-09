@@ -70,6 +70,12 @@ export const ItemsProvider = (props) => {
              } else return itemInCart
          })
          setCart(newCart)	
+		 const newItems = items.map(dbItem=> {
+			 if(dbItem.id === id) {
+				 return {...dbItem, stock: dbItem.stock + 1}
+			 } else return dbItem
+		 })
+		 setItems(newItems)
 	}
 
 	const totalItemsCount = cart.reduce( (acc, item)=> {

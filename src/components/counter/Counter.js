@@ -2,9 +2,21 @@ import React, { useEffect } from 'react'
 import Button from '@material-ui/core/Button';
 import "./Counter.css"
 import { useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Input from '@material-ui/core/Input';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+    },
+  },
+}));
+
 
 
 export const Counter = ({stock, onAdd}) => {
+    const classes = useStyles();
 
     const [count, setCount] = useState(1)
     const increment = () => {
@@ -23,7 +35,7 @@ export const Counter = ({stock, onAdd}) => {
             setDisabled(true)} else {
                 setDisabled(false)
             }
-    }, [count])
+    }, [count, stock])
 
     
 
@@ -35,7 +47,7 @@ export const Counter = ({stock, onAdd}) => {
             <div className="btn">
             <Button variant="contained" color="primary" disabled={disabled}  onClick={increment}>Add</Button>
             </div>
-            <div className="btn"><h2>{count}</h2></div>
+            <div className="btn"> <Input  value={count} /></div>
             <div className="btn">
             <Button variant="contained" color="primary"  onClick={decrement}> Delete</Button>
             </div>
