@@ -7,9 +7,11 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { CounterContainer } from "../../components/counter/CounterContainer";
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
+import Button from '@material-ui/core/Button';
 import { ItemsContext } from '../../Context/Context';
-
+import { Link } from 'react-router-dom';
+import  "./ItemDetailContainer.css"
 
 const useStyles = makeStyles({
   root: {
@@ -24,9 +26,12 @@ const useStyles = makeStyles({
 export default function ItemDetail({data}) {
     const classes = useStyles();
     const {addToCart, cart}  = useContext(ItemsContext)
+    const [isDisabled, setDisabled] = useState(false)
+
 
     const onAdd = (qty) => { 
       addToCart(data, qty)
+      setDisabled(true)
       }
     
 
@@ -55,7 +60,10 @@ export default function ItemDetail({data}) {
           </CardContent>
         </CardActionArea>
         <CardActions className="counter-container">
-          <CounterContainer data={data} onAdd={onAdd}/>
+          <div  className={`${isDisabled ? "disabled" : ""}`} ><CounterContainer data={data} onAdd={onAdd}/></div>
+          <div className={`${isDisabled ? "" : "disabled"}`}><Link to="/CartView"><Button variant="contained" color="primary">Finalize </Button></Link></div>
+
+          
         </CardActions>
       </Card>)    
     

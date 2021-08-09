@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import {Link} from "react-router-dom"
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -9,6 +10,10 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { useContext, useEffect, useState} from 'react'
 import { ItemsContext } from '../../Context/Context'
+import Input from '@material-ui/core/Input';
+import "./CartView.css"
+
+
 
 
 const useStyles = makeStyles({
@@ -23,34 +28,33 @@ const useStyles = makeStyles({
 
 export  function CartView() {
   const classes = useStyles();
-  const {cart, clearCart, deleteFromCart, addToCart, setCart, totalPrice} = useContext(ItemsContext)
-  const onDelete = (item) => {
-      if (item.quantity === 1) {
-          deleteFromCart(item.id)
-      } else {
-        const newCart = cart.map( itemInCart => {
-            if (itemInCart.id === item.id ) {
-                return {...itemInCart, quantity: itemInCart.quantity - 1}
-             } else return itemInCart
-         })
-         setCart(newCart)	
-          
-      }
-  }
+  const {cart, clearCart, deleteFromCart, addToCart, setCart, totalPrice, deleteOne, totalItemsCount} = useContext(ItemsContext)
+
+ const onDelete = (item) => {
+   if (item.quantity === 1) {
+       deleteFromCart(item.id)
+   } else {
+    deleteOne(item.id)
+        
+   }
+ }
   
+  if (totalItemsCount === 0) return (
+  
+  <div>
+    <h2>You have nothing in Cart, please go back to shop to see our products</h2>
+    <h3><Link to="/Shop" >Shop</Link></h3>
+  </div> )
 
   return ( 
 
     <div>
 
-    <div> <input value={`Total Price: ${totalPrice}$`}/> </div>
-
-    
-
+  
         <div className="cart-container">
             {cart.map(item => {
                 return (
-                    <div key={`itemInCart-${item.id}`}>
+                    <div key={`itemInCart-${item.id}`} className="cardItem">
 
       <Card className={classes.root}>
       <CardActionArea>
@@ -74,10 +78,11 @@ export  function CartView() {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" onClick={()=> {addToCart(item, 1)}} color="primary">
-            Add
-        </Button>
-        <Button onClick={()=> {onDelete(item)}}size="small" color="primary">
+
+       
+
+       
+        <Button onClick={()=> {onDelete(item)}} size="small" variant="contained" color="secondary">
             Remove
         </Button>
       </CardActions>
@@ -94,7 +99,11 @@ export  function CartView() {
             
         </div>
 
+        <div> 
+            <Input defaultValue={`Total Price: ${totalPrice}$`}/> 
+            <Button onClick={()=> {clearCart()}} size="small" variant="contained" color="secondary">Delete All</Button>
         
+        </div>
     
 
         </div>) 

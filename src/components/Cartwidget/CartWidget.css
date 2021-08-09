@@ -1,3 +1,7 @@
 .cart-icon-container {
   display: flex;
 }
+
+.cartHide {
+  display: none;
+}

@@ -28,7 +28,6 @@ export const ItemsProvider = (props) => {
 
 	}, [])
 
-	
 	const addToCart = (item, num) => {
 		let isItemInCart = cart.find( product => product.id === item.id)
 		if (isItemInCart) {
@@ -47,10 +46,20 @@ export const ItemsProvider = (props) => {
 	}
 	const clearCart = () => {
 		setCart([])
+	
 	}
 
 	const deleteFromCart = (id) => {
 		setCart(cart.filter((item) => item.id !== id))
+	}
+
+	const deleteOne = (id) => {
+		const newCart = cart.map( itemInCart => {
+            if (itemInCart.id === id ) {
+                return {...itemInCart, quantity: itemInCart.quantity - 1}
+             } else return itemInCart
+         })
+         setCart(newCart)	
 	}
 
 	const totalItemsCount = cart.reduce( (acc, item)=> {
@@ -67,7 +76,7 @@ export const ItemsProvider = (props) => {
     
 
 	return (
-		<ItemsContext.Provider value={{items, setItems, addToCart, clearCart, cart, deleteFromCart, setCart, totalItemsCount, totalPrice }}>
+		<ItemsContext.Provider value={{items, setItems, addToCart, clearCart, cart, deleteFromCart, setCart, totalItemsCount, totalPrice, deleteOne  }}>
 			{props.children}
 		</ItemsContext.Provider>
 	);
