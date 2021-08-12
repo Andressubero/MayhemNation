@@ -8,10 +8,11 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { useContext} from 'react'
+import { useContext, useState} from 'react'
 import { ItemsContext } from '../../Context/Context'
 import Input from '@material-ui/core/Input';
 import "./CartView.css"
+import {Form} from "../../components/Form/Form"
 
 
 
@@ -29,6 +30,7 @@ const useStyles = makeStyles({
 export  function CartView() {
   const classes = useStyles();
   const {cart, clearCart, deleteFromCart,  totalPrice, deleteOne, totalItemsCount} = useContext(ItemsContext)
+  const [form, setForm] = useState(false)
 
  const onDelete = (item) => {
    if (item.quantity === 1) {
@@ -37,6 +39,9 @@ export  function CartView() {
     deleteOne(item.id)
         
    }
+ }
+ const showForm = () => {
+   setForm(true)
  }
   
   if (totalItemsCount === 0) return (
@@ -49,8 +54,11 @@ export  function CartView() {
   return ( 
 
     <div>
+      <div className={form? "": "hide"}>
+        <Form/>
+      </div>
 
-  
+    <div className={form? "hide": ""}>  
         <div className="cart-container">
             {cart.map(item => {
                 return (
@@ -61,7 +69,7 @@ export  function CartView() {
         <CardMedia
           className={classes.media}
           image={item.img}
-          title="Contemplative Reptile"
+          title={item.name}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
@@ -102,9 +110,12 @@ export  function CartView() {
         <div> 
             <Input defaultValue={`Total Price: ${totalPrice}$`}/> 
             <Button onClick={()=> {clearCart()}} size="small" variant="contained" color="secondary">Delete All</Button>
+            <Button onClick={()=> {showForm()}} size="small" variant="contained" color="secondary">finish</Button>
+
         
         </div>
     
 
+        </div>
         </div>) 
 }
