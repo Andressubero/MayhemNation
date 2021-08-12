@@ -1,7 +1,7 @@
 import React from "react"
 import ItemList from '../Itemlist/Itemlist';
 import { ItemsContext } from '../../Context/Context';
-import  { useContext,  useEffect } from 'react';
+import  { useContext,  useEffect, useState} from 'react';
 import {  useHistory} from "react-router-dom";
 import { useParams } from 'react-router-dom';
 import "./ItemListContainer.css"
@@ -16,15 +16,29 @@ const Itemlistcontainer = (props) => {
     const {items} = useContext(ItemsContext)
 
     let { catId } =  useParams()
+    
+    const [products, setProducts] = useState([])
 
     const OnClick = (category) => {
         history.push(`/Shop/${category}`)
-        console.log(catId)
+        
     }
     console.log(catId)
     
     useEffect ( ()=> {
-        console.log(catId)
+        if (!catId ) return setProducts(items)
+        if (catId) {
+            if (catId === "all" ) {
+                setProducts(items)
+            } else {
+                const filteredItems = items.filter( item => item.cat === catId )
+                setProducts(filteredItems)
+            }
+            
+            
+
+        }
+        
  
 
     }, [catId])
@@ -41,19 +55,19 @@ const Itemlistcontainer = (props) => {
              <h2 onClick={()=> OnClick("cf")}>
                    CrossFit
                </h2>
-               <h2 onClick={()=> OnClick("bb")}>
+               <h2 onClick={()=> OnClick("bar")}>
                    Barbells
                </h2>
-               <h2 onClick={()=> OnClick("racks")}> 
+               <h2 onClick={()=> OnClick("oly")}> 
                    Racks
                </h2>
-               <h2 onClick={()=> OnClick("plates")}>
+               <h2 onClick={()=> OnClick("plate")}>
                    Plates
                </h2>
 
            </div>
            
-          <div><ItemList items={items}/></div> 
+          <div><ItemList items={products}/></div> 
 
        
        
