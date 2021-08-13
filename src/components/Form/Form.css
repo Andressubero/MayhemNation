@@ -1,0 +1,15 @@
+.form-container {
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: row;
+  margin: 20px auto;
+}
+.input-container div {
+  margin: 20px;
+  padding: 20px;
+}

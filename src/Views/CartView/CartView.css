@@ -5,9 +5,22 @@
 }
 
 .cardItem {
-  margin: 20px auto;
+  margin: 20px;
 }
 
 .hide {
   display: none;
+}
+.cart-view-container {
+  display: flex;
+}
+
+.input-container-cart {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 10px;
+}
+.input-container-cart div {
+  margin: 10px auto;
 }

@@ -14,15 +14,16 @@ export const ItemDetailContainer = ({match}) => {
  
     const [prod, setProd] = useState(0)
 
-    const findProduct = () => {
-       let  product = items.find((product) => product.id === match.params.id)
-        setProd(product)
-    }
+    
     
     useEffect( () => {
-        findProduct() 
+        const findProduct = () => {
+            let  product = items.find((product) => product.id === match.params.id)
+             setProd(product)
+         }
+         findProduct()
         setLoading(false)
-    },)
+    },[items, match])
 
     if (isLoading || !prod) return <h1>Loading</h1>
 

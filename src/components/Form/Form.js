@@ -2,7 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
-import { useState } from 'react';
+import { useState} from 'react';
+import "./Form.css"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Form = () => {
+export const Form = ({onHide, submitUser, totalPrice, finish}) => {
   const classes = useStyles();
 
   const initialState = {
@@ -32,23 +33,45 @@ export const Form = () => {
 
  }
 
- const onSubmit = (e) => {
-     e.preventDefault();
+ const onSubmit = () => {
+   
      console.log(values) 
+     submitUser(values)
      setValues({...initialState})
+     finish()
+     
+     
  }
 
     return (
-        <form className={classes.root} noValidate autoComplete="off">
-        <Input placeholder="Last Name" name="lastName" onChange={onChange} inputProps={{ 'aria-label': 'description' }} />
-        <Input placeholder="First Name" name="firstName" onChange={onChange}  inputProps={{ 'aria-label': 'description' }} />
-        <Input placeholder="Phone" name="phone"  onChange={onChange}  inputProps={{ 'aria-label': 'description' }} />
-        <Input placeholder="Adress" name="adress" onChange={onChange}  inputProps={{ 'aria-label': 'description' }} />
-        <Input placeholder="Card Number" name="cardNumber"  onChange={onChange}  inputProps={{ 'aria-label': 'description' }} />
-        <Input placeholder="CVV" name="cvv"  onChange={onChange}  inputProps={{ 'aria-label': 'description' }} />
-        <Button variant="contained"  color="secondary" onClick={ () => {onSubmit()}}>Submit</Button>
+
+      
+        <div>
+        <form  className={classes.root} noValidate autoComplete="off">
+          <div className="input-container"> 
+
+            <div> 
+            <Input placeholder="Last Name" name="lastName" value={values.lastName} onChange={onChange} inputProps={{ 'aria-label': 'description' }} />
+            <Input placeholder="First Name" name="firstName" value={values.firstName} onChange={onChange}  inputProps={{ 'aria-label': 'description' }} />
+            <Input placeholder="Phone" name="phone"  onChange={onChange} value={values.phone} inputProps={{ 'aria-label': 'description' }} />
+          </div>
+
+        <div>
+          <Input placeholder="Adress" name="adress" onChange={onChange} value={values.adress} inputProps={{ 'aria-label': 'description' }} />
+          <Input placeholder="Card Number" name="cardNumber"  onChange={onChange} value={values.cardNumber}  inputProps={{ 'aria-label': 'description' }} />
+          <Input placeholder="CVV" name="cvv"  onChange={onChange} value={values.cvv} inputProps={{ 'aria-label': 'description' }} />
+        </div>
+
+        </div>
+         
+       
+        <Button variant="contained" onClick={ () => {onHide()}}  color="secondary" >Back to Cart</Button>
+        <Input defaultValue={`Total to pay: ${totalPrice}$`}/>
+        <Button variant="contained" onClick={ () => {onSubmit()}}  color="secondary" >Submit</Button>
 
 
-      </form>
+      </form></div>
+    
+        
     )
     }

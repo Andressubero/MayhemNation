@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {Link} from "react-router-dom"
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -8,11 +7,9 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { useContext, useState} from 'react'
-import { ItemsContext } from '../../Context/Context'
 import Input from '@material-ui/core/Input';
 import "./CartView.css"
-import {Form} from "../../components/Form/Form"
+
 
 
 
@@ -27,38 +24,21 @@ const useStyles = makeStyles({
   },
 });
 
-export  function CartView() {
+export  function CartView({onHide, onDelete, totalPrice, cart, clearCart}) {
   const classes = useStyles();
-  const {cart, clearCart, deleteFromCart,  totalPrice, deleteOne, totalItemsCount} = useContext(ItemsContext)
-  const [form, setForm] = useState(false)
-
- const onDelete = (item) => {
-   if (item.quantity === 1) {
-       deleteFromCart(item.id)
-   } else {
-    deleteOne(item.id)
-        
-   }
- }
- const showForm = () => {
-   setForm(true)
- }
-  
-  if (totalItemsCount === 0) return (
-  
-  <div>
-    <h2>You have nothing in Cart, please go back to shop to see our products</h2>
-    <h3><Link to="/Shop" >Shop</Link></h3>
-  </div> )
+    
 
   return ( 
+    <div className="cart-view-container"> 
 
-    <div>
-      <div className={form? "": "hide"}>
-        <Form/>
+      <div className="input-container-cart"> 
+            <div><Input defaultValue={`Total Price: ${totalPrice}$`}/> </div>
+            <div><Button onClick={()=> {clearCart()}} size="small" variant="contained" color="secondary">Delete All</Button></div>
+            <div><Button size="small" variant="contained" onClick={()=>{onHide()}} color="secondary">finish</Button></div>
+
+        
       </div>
 
-    <div className={form? "hide": ""}>  
         <div className="cart-container">
             {cart.map(item => {
                 return (
@@ -97,25 +77,15 @@ export  function CartView() {
     </Card>
 
 
-                    </div>  
-               
-                    
-                    
+                    </div>                    
                 )
-
             })}
             
         </div>
 
-        <div> 
-            <Input defaultValue={`Total Price: ${totalPrice}$`}/> 
-            <Button onClick={()=> {clearCart()}} size="small" variant="contained" color="secondary">Delete All</Button>
-            <Button onClick={()=> {showForm()}} size="small" variant="contained" color="secondary">finish</Button>
-
         
-        </div>
     
 
         </div>
-        </div>) 
+       ) 
 }

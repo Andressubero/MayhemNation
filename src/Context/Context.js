@@ -28,6 +28,10 @@ export const ItemsProvider = (props) => {
 
 	}, [])
 
+	const submitUser = async (user)  => {
+		await db.collection("users").doc().set(user)
+	}
+
 	const addToCart = (item, num) => {
 		let isItemInCart = cart.find( product => product.id === item.id)
 		if (isItemInCart) {
@@ -92,7 +96,7 @@ export const ItemsProvider = (props) => {
     
 
 	return (
-		<ItemsContext.Provider value={{items, setItems, addToCart, clearCart, cart, deleteFromCart, setCart, totalItemsCount, totalPrice, deleteOne  }}>
+		<ItemsContext.Provider value={{items, setItems, addToCart, clearCart, cart, deleteFromCart, setCart, totalItemsCount, totalPrice, deleteOne, submitUser  }}>
 			{props.children}
 		</ItemsContext.Provider>
 	);

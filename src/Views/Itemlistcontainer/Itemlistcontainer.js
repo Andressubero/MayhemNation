@@ -41,7 +41,7 @@ const Itemlistcontainer = (props) => {
         
  
 
-    }, [catId])
+    }, [catId, items])
 
  
 

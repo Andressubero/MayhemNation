@@ -2,21 +2,13 @@ import React, { useEffect } from 'react'
 import Button from '@material-ui/core/Button';
 import "./Counter.css"
 import { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Input from '@material-ui/core/Input';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > *': {
-      margin: theme.spacing(1),
-    },
-  },
-}));
 
 
 
 export const Counter = ({stock, onAdd}) => {
-    const classes = useStyles();
+   
 
     const [count, setCount] = useState(1)
     const increment = () => {
