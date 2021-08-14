@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 import {db} from "../Firebase/Firebase";
+import firebase from "firebase/app";
 
 
 
@@ -8,7 +9,11 @@ export const ItemsContext = createContext();
 export const ItemsProvider = (props) => {
 	
 	const [items, setItems] = useState([]);
+	const [userOrder, setOrder] = useState([])
 	const [cart, setCart] = useState([])
+
+
+	
 
 	const getProducts = () => {
 
@@ -22,11 +27,36 @@ export const ItemsProvider = (props) => {
 
 	}
 
+	const getUser = () => {
+
+		const userFB = []
+		db.collection('users').onSnapshot((querySnapshot)=> {
+		querySnapshot.forEach((doc) => {
+			setOrder({...doc.data(), id: doc.id})
+		})
+	
+	})
+
+}
+
+		const [curr , setCurr] = useState('');
+
+		const getDate = () => {
+		const a = firebase.firestore
+		.Timestamp.now().toDate().toString();
+	setCurr(a);
+ 
+	}
+
     useEffect(() => {
 
 		getProducts()
+		getUser()
+		getDate()
 
 	}, [])
+
+	
 
 	const submitUser = async (user)  => {
 		await db.collection("users").doc().set(user)
@@ -96,7 +126,7 @@ export const ItemsProvider = (props) => {
     
 
 	return (
-		<ItemsContext.Provider value={{items, setItems, addToCart, clearCart, cart, deleteFromCart, setCart, totalItemsCount, totalPrice, deleteOne, submitUser  }}>
+		<ItemsContext.Provider value={{items, setItems, addToCart, clearCart, cart, deleteFromCart, setCart, curr, totalItemsCount, totalPrice, deleteOne, submitUser, userOrder  }}>
 			{props.children}
 		</ItemsContext.Provider>
 	);

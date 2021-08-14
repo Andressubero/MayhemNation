@@ -7,6 +7,8 @@ import Contact from "./Views/Contact/Contact";
 import {ItemDetailContainer} from "./Views/ItemDetail/itemDetailContainer"
 import { ItemsProvider } from './Context/Context';
 import {CartViewContainer} from './Views/CartView/CartViewContainer'
+import {Form}  from './components/Form/Form'
+import {FinalMessage} from "./components/FinalMessage/Finalmessage"
 
 
 function App() {
@@ -18,10 +20,12 @@ function App() {
        <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/CartView" component={CartViewContainer} />
+        <Route path="/Form" component={Form} />
         <Route exact={true} path="/Shop" component={Itemlistcontainer} />
         <Route path="/Shop/:catId" component={Itemlistcontainer} />
         <Route path="/Contact" component={Contact} />
         <Route path="/detail/:id" component={ItemDetailContainer} />
+        <Route path="/checkOut" component={FinalMessage} />
        </Switch>      
     </div>
     </Router>

@@ -1,10 +1,9 @@
 import React from 'react'
-import { Form } from '../../components/Form/Form'
 import { CartView } from './CartView'
 import { useContext, useState } from 'react'
 import { ItemsContext } from '../../Context/Context'
 import {Link} from "react-router-dom"
-import { FinalMessage } from '../../components/FinalMessage/Finalmessage'
+
 
 
 
@@ -38,18 +37,10 @@ export const CartViewContainer = () => {
 
     return (
         <div>
-            <div className={finishShop?  "hide": ""}>
+           
                 
-            <div className={hide? "hide" : ""}><CartView onDelete={onDelete} onHide={onHide} totalPrice={totalPrice} cart={cart} clearCart={clearCart}/></div>
-            <div  className={hide? "" : "hide"}><Form totalPrice={totalPrice} finish={finish} clearCart={clearCart} submitUser={submitUser} onHide={onHide}/></div>
-            
-            </div>
-            <div className={finishShop?  "": "hide"}>
-
-                <FinalMessage clearCart={clearCart} cart={cart} totalPrice={totalPrice}/>
-
-               
-            </div>
+          <CartView onDelete={onDelete} onHide={onHide} totalPrice={totalPrice} cart={cart} clearCart={clearCart}/>       
+         
             
         </div>
     )

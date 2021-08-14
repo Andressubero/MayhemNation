@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Input from '@material-ui/core/Input';
 import "./CartView.css"
+import { Link } from 'react-router-dom';
 
 
 
@@ -24,7 +25,7 @@ const useStyles = makeStyles({
   },
 });
 
-export  function CartView({onHide, onDelete, totalPrice, cart, clearCart}) {
+export  function CartView({ onDelete, totalPrice, cart}) {
   const classes = useStyles();
     
 
@@ -33,8 +34,8 @@ export  function CartView({onHide, onDelete, totalPrice, cart, clearCart}) {
 
       <div className="input-container-cart"> 
             <div><Input defaultValue={`Total Price: ${totalPrice}$`}/> </div>
-            <div><Button onClick={()=> {clearCart()}} size="small" variant="contained" color="secondary">Delete All</Button></div>
-            <div><Button size="small" variant="contained" onClick={()=>{onHide()}} color="secondary">finish</Button></div>
+           
+            <div><Link to="/Form"><Button size="small" variant="contained"  color="secondary">Finish</Button></Link></div>
 
         
       </div>
