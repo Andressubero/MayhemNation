@@ -29,7 +29,7 @@ export const ItemsProvider = (props) => {
 
 	const getUser = () => {
 
-		const userFB = []
+		
 		db.collection('users').onSnapshot((querySnapshot)=> {
 		querySnapshot.forEach((doc) => {
 			setOrder({...doc.data(), id: doc.id})

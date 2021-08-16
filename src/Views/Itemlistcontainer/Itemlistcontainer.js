@@ -23,7 +23,7 @@ const Itemlistcontainer = (props) => {
         history.push(`/Shop/${category}`)
         
     }
-    console.log(catId)
+  
     
     useEffect ( ()=> {
         if (!catId ) return setProducts(items)

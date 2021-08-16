@@ -1,6 +1,6 @@
 import React from 'react'
 import { CartView } from './CartView'
-import { useContext, useState } from 'react'
+import { useContext} from 'react'
 import { ItemsContext } from '../../Context/Context'
 import {Link} from "react-router-dom"
 
@@ -9,7 +9,7 @@ import {Link} from "react-router-dom"
 
 export const CartViewContainer = () => {
 
-    const {cart, clearCart, deleteFromCart,  totalPrice, deleteOne, totalItemsCount, submitUser} = useContext(ItemsContext)
+    const {cart, clearCart, deleteFromCart,  totalPrice, deleteOne, totalItemsCount} = useContext(ItemsContext)
     const onDelete = (item) => {
         if (item.quantity === 1) {
             deleteFromCart(item.id)
@@ -18,14 +18,9 @@ export const CartViewContainer = () => {
              
         }
       }
-    const [finishShop, setFinish] = useState(false)
-    const finish = () => {
-        setFinish(true)
-    }
-    const [hide, setHide] = useState(false)
-    const onHide = () => {
-        setHide(value=> !value)
-    }
+    
+   
+  
     
 
     if (totalItemsCount === 0) return (
@@ -39,7 +34,7 @@ export const CartViewContainer = () => {
         <div>
            
                 
-          <CartView onDelete={onDelete} onHide={onHide} totalPrice={totalPrice} cart={cart} clearCart={clearCart}/>       
+          <CartView onDelete={onDelete}  totalPrice={totalPrice} cart={cart} clearCart={clearCart}/>       
          
             
         </div>

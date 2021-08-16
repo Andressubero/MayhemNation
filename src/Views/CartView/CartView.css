@@ -24,3 +24,8 @@
 .input-container-cart div {
   margin: 10px auto;
 }
+
+.link {
+  color: white;
+  text-decoration: none;
+}

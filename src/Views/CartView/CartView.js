@@ -35,7 +35,7 @@ export  function CartView({ onDelete, totalPrice, cart}) {
       <div className="input-container-cart"> 
             <div><Input defaultValue={`Total Price: ${totalPrice}$`}/> </div>
            
-            <div><Link to="/Form"><Button size="small" variant="contained"  color="secondary">Finish</Button></Link></div>
+            <div><Link className="link" to="/Form"><Button size="small" variant="contained"  color="secondary">Finish</Button></Link></div>
 
         
       </div>

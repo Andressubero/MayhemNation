@@ -37,7 +37,7 @@ export const Form = () => {
 
   const onChange = (e) => {
      const {name, value} = e.target
-     setValues({...values, [name]:value, products: cart, date: curr})
+     setValues({...values, [name]:value, products: cart, date: curr, total: totalPrice})
 
  }
 
@@ -78,9 +78,9 @@ export const Form = () => {
         </div>
          
        
-        <Link to="/CartView"><Button  variant="contained"  color="secondary" >Back to Cart</Button></Link>
+        <Link className="link" to="/CartView"><Button  variant="contained"  color="secondary" >Back to Cart</Button></Link>
         <Input defaultValue={`Total to pay: ${totalPrice}$`}/>
-        <Link to="CheckOut"> <Button variant="contained" onClick={ () => {onSubmit()}}  color="secondary" >Submit</Button></Link>
+        <Link className="link" to="CheckOut"> <Button variant="contained" onClick={ () => {onSubmit()}}  color="secondary" >Submit</Button></Link>
        
 
 
