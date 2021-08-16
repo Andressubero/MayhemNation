@@ -95,6 +95,13 @@ export const ItemsProvider = (props) => {
 
 	const deleteFromCart = (id) => {
 		setCart(cart.filter((item) => item.id !== id))
+		const newItems = items.map(dbItem=> {
+			if(dbItem.id === id) {
+				return {...dbItem, stock: dbItem.stock + 1}
+			} else return dbItem
+		})
+		setItems(newItems)
+
 	}
 
 	const deleteOne = (id) => {

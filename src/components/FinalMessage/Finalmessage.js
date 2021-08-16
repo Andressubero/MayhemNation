@@ -14,7 +14,6 @@ export const FinalMessage = () => {
             
             <h1>Congratulations, you finished your purchase, we will contact you shortly.</h1>
             <h2>Purchase information:</h2>
-            <h3>{userOrder.date}</h3>
             <h3>{userOrder.id}</h3>
             <Button  variant="contained" onClick={()=>{clearCart()}}  color="secondary"><Link to="/">Exit</Link></Button>
 

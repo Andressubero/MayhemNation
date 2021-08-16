@@ -39,7 +39,7 @@ export const Counter = ({stock, onAdd}) => {
             <div className="btn">
             <Button variant="contained" color="primary" disabled={disabled}  onClick={increment}>Add</Button>
             </div>
-            <div className="btn"> <Input  value={count} /></div>
+            <div className="btn"> <Input className="input" value={count} /></div>
             <div className="btn">
             <Button variant="contained" color="primary"  onClick={decrement}> Delete</Button>
             </div>
