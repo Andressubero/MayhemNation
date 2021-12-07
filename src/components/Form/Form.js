@@ -53,38 +53,31 @@ export const Form = () => {
 
       
         <div>
-        <form  className={classes.root} noValidate autoComplete="off">
-          <div className="input-container"> 
-
-            <div> 
-            <Input placeholder="Last Name" name="lastName" value={values.lastName} onChange={onChange} inputProps={{ 'aria-label': 'description' }} />
-            <Input placeholder="First Name" name="firstName" value={values.firstName} onChange={onChange}  inputProps={{ 'aria-label': 'description' }} />
-            <Input placeholder="Phone" name="phone"  onChange={onChange} value={values.phone} inputProps={{ 'aria-label': 'description' }} />
-            <Input placeholder="E-mail" name="email" onChange={onChange} value={values.email} inputProps={{ 'aria-label': 'description' }} />
-          </div>
-
-          <div>
-          <h3>Products:</h3>
-            <ul>
-                {cart.map(item=>  {
-                    return (
-                        <li key={`compra-${item.id}`}>Product: {item.name}/ Quantity: {item.quantity}</li>
-                    )
-                })}
-            </ul>
-            Full payment: {totalPrice} $
-          </div>
-
+          <form  className={classes.root} noValidate autoComplete="off">
+              <div className="input-container"> 
+                <div> 
+                  <Input placeholder="Last Name" name="lastName" value={values.lastName} onChange={onChange} inputProps={{ 'aria-label': 'description' }} />
+                  <Input placeholder="First Name" name="firstName" value={values.firstName} onChange={onChange}  inputProps={{ 'aria-label': 'description' }} />
+                  <Input placeholder="Phone" name="phone"  onChange={onChange} value={values.phone} inputProps={{ 'aria-label': 'description' }} />
+                  <Input placeholder="E-mail" name="email" onChange={onChange} value={values.email} inputProps={{ 'aria-label': 'description' }} />
+                </div>
+                <div>
+                    <h3>Products:</h3>
+                      <ul>
+                          {cart.map(item=>  {
+                              return (
+                                  <li key={`compra-${item.id}`}>Product: {item.name}/ Quantity: {item.quantity}</li>
+                              )
+                          })}
+                      </ul>
+                      Full payment: {totalPrice} $
+                  </div>
+              </div>       
+            <Link className="link" to="/CartView"><Button  variant="contained"  color="secondary" >Back to Cart</Button></Link>
+            <Input defaultValue={`Total to pay: ${totalPrice}$`}/>
+            <Link className="link" to="CheckOut"> <Button variant="contained" onClick={ () => {onSubmit()}}  color="secondary" >Submit</Button></Link>
+            </form>
         </div>
-         
-       
-        <Link className="link" to="/CartView"><Button  variant="contained"  color="secondary" >Back to Cart</Button></Link>
-        <Input defaultValue={`Total to pay: ${totalPrice}$`}/>
-        <Link className="link" to="CheckOut"> <Button variant="contained" onClick={ () => {onSubmit()}}  color="secondary" >Submit</Button></Link>
-       
-
-
-      </form></div>
     
         
     )

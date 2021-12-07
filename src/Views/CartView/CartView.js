@@ -27,19 +27,12 @@ const useStyles = makeStyles({
 
 export  function CartView({ onDelete, totalPrice, cart}) {
   const classes = useStyles();
-    
-
   return ( 
     <div className="cart-view-container"> 
-
       <div className="input-container-cart"> 
             <div><Input defaultValue={`Total Price: ${totalPrice}$`}/> </div>
-           
-            <div><Link className="link" to="/Form"><Button size="small" variant="contained"  color="secondary">Finish</Button></Link></div>
-
-        
+            <div><Link className="link" to="/Form"><Button size="small" variant="contained"  color="secondary">Finish</Button></Link></div>        
       </div>
-
         <div className="cart-container">
             {cart.map(item => {
                 return (
@@ -76,17 +69,10 @@ export  function CartView({ onDelete, totalPrice, cart}) {
         </Button>
       </CardActions>
     </Card>
-
-
-                    </div>                    
-                )
-            })}
-            
-        </div>
-
-        
-    
-
-        </div>
-       ) 
+    </div>                    
+    )
+    })}   
+      </div>
+    </div>
+  ) 
 }
